@@ -15,13 +15,6 @@ app.use("/static", express.static("./built"));
 
 app.get('*', async (req, res, next) => {
     try {
-        const app = ReactDOMServer.renderToString(
-            <StaticRouter location={req.url}>
-                <App />
-            </StaticRouter>
-        );
-        const helmet = Helmet.renderStatic();
-
         const routes = [
             {
                 path: "/posts/:id",
@@ -41,6 +34,13 @@ app.get('*', async (req, res, next) => {
                 break;
             }
         }
+
+        const app = ReactDOMServer.renderToString(
+            <StaticRouter location={req.url}>
+                <App initialData={data}/>
+            </StaticRouter>
+        );
+        const helmet = Helmet.renderStatic();
 
         const html = `
         <!DOCTYPE html>
