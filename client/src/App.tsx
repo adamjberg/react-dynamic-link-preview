@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import React from "react";
+import { Route, Routes } from "react-router";
+import { Home } from "./Home";
+import { Post } from "./Post";
 
-export const App: React.FC = () => {
-    const [clientMessage, setClientMessage] = useState("");
+type AppProps = {
+    initialData?: any;
+}
 
-    useEffect(() => {
-        setClientMessage("Hello from the client!")
-    }, [setClientMessage]);
-
+export const App: React.FC<AppProps> = ({ initialData }) => {
     return (
-        <div className="app">
-            <Helmet>
-                <title>React Helmet Title</title>
-            </Helmet>
-            <h1>Hello from the server!</h1>
-            <h2>{clientMessage}</h2>
-        </div>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/posts/:id" element={<Post initialData={initialData} />} />
+        </Routes>
     )
 }

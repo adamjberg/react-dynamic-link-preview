@@ -26,20 +26,24 @@ export const App: React.FC = () => {
 
 ```
 curl http://localhost:4242
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Side Rendering With React</title>
+
+<!DOCTYPE html>
+<html >
+    <head>
+    <title data-react-helmet="true">Server Title</title>
+    
+    
     <script src="app.js" async defer></script>
-</head>
-<body>
-    <div id="root"><div class="app" data-reactroot=""><h1>Hello from the server!</h1><h2></h2></div></div>
-</body>
+    </head>
+    <body >
+    <div id="root">
+        <div class="app" data-reactroot=""><h1>Hello from the server!</h1><h2></h2></div>
+    </div>
+    </body>
 </html>
 ```
 
 ## Resources
 
-https://www.digitalocean.com/community/tutorials/react-server-side-rendering
+https://blog.logrocket.com/search-optimized-spas-react-helmet/
+https://reactrouter.com/docs/en/v6/guides/ssr
